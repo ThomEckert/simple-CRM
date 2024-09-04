@@ -6,15 +6,17 @@ import {
   MatDialogActions,
   MatDialogClose,
   MatDialogModule,
+  MatDialogRef,
 } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-dialog-add-user',
   standalone: true,
+  providers: [provideNativeDateAdapter()],
   imports: [
     MatButtonModule,
     MatDialogTitle,
