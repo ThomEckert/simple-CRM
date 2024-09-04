@@ -16,12 +16,34 @@
   </div>
 
   <div>
-    <mat-form-field appearance="outline" color="accent">
+    <mat-form-field appearance="outline" color="accent" class="full-width">
       <mat-label>Birth Date</mat-label>
-      <input matInput [matDatepicker]="picker1" placeholder="Birth Date"/>
+      <input matInput [matDatepicker]="picker1" placeholder="Birth Date" />
       <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
-      <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker1"
+      ></mat-datepicker-toggle>
       <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="outline" color="accent" class="full-width">
+      <mat-label>Street + HouseNo</mat-label>
+      <input matInput placeholder="z.B. Musterallee" />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="outline" color="accent" class="mr-16">
+      <mat-label>ZipCode</mat-label>
+      <input matInput placeholder="z.B. Mustermann" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>City</mat-label>
+      <input matInput placeholder="z.B. Mustermann" />
     </mat-form-field>
   </div>
 </div>
