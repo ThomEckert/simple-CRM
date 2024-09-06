@@ -14,6 +14,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, provideNativeDateAdapter } from '@angular/material/core';
 import { User } from '../../models/user.class';
 import { FormsModule } from '@angular/forms';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -39,10 +40,17 @@ export class DialogAddUserComponent {
 
   user: User = new User();
   birthDate: Date = new Date();
+  loading: boolean = false;
 
-  saveNewUser() {
+  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>, public firebase: FirebaseService) { }
+
+  public async saveNewUser(): Promise<void> {
     this.user.birthDate = this.birthDate.getTime();
-    console.log('save new user', this.user);
+    let userJson = this.user.toJSON();
+    this.loading = true;
+    await this.firebase.addNewUser(userJson);
+    this.loading = false;
+    this.dialogRef.close();
   }
 
 }
