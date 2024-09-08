@@ -15,6 +15,9 @@ import { MatNativeDateModule, provideNativeDateAdapter } from '@angular/material
 import { User } from '../../models/user.class';
 import { FormsModule } from '@angular/forms';
 import { FirebaseService } from '../services/firebase.service';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -32,6 +35,8 @@ import { FirebaseService } from '../services/firebase.service';
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
+    MatProgressBarModule,
+    CommonModule,
   ],
   templateUrl: './dialog-add-user.component.html',
   styleUrl: './dialog-add-user.component.scss',
