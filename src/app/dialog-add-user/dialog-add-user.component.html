@@ -17,6 +17,13 @@
 
   <div>
     <mat-form-field appearance="outline" color="accent" class="full-width">
+      <mat-label>E-Mail</mat-label>
+      <input [disabled]="loading" [(ngModel)]="user.eMail" matInput placeholder="z.B. max-mustermann@email.com" />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="outline" color="accent" class="full-width">
       <mat-label>Birth Date</mat-label>
       <input [disabled]="loading" [(ngModel)]="birthDate" matInput [matDatepicker]="picker1" placeholder="Birth Date" />
       <mat-datepicker-toggle
