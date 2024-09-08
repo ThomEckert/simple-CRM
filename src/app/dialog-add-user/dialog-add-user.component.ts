@@ -50,9 +50,9 @@ export class DialogAddUserComponent {
   constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>, public firebase: FirebaseService) { }
 
   public async saveNewUser(): Promise<void> {
+    this.loading = true;
     this.user.birthDate = this.birthDate.getTime();
     let userJson = this.user.toJSON();
-    this.loading = true;
     await this.firebase.addNewUser(userJson);
     this.loading = false;
     this.dialogRef.close();
