@@ -1,13 +1,35 @@
 <mat-card-content>
-    <table>
-        <th>Name</th>
-        <th>E-Mail</th>
-        <th>Birth Date</th>
-        <th>Adress</th>
-    </table>
+  <table class="user-table">
+    <tr>
+      <th>Name</th>
+      <th>E-Mail</th>
+      <th>Birth Date</th>
+      <th>Adress</th>
+    </tr>
+
+    <tr>
+        <td>Max Mustermann</td>
+        <td>max-mustermann&#64;email.com</td>
+        <td>01.01.2001</td>
+        <td>11111 Musterstadt</td>
+    </tr>
+
+    <tr>
+      <td>Freddy Mustermann</td>
+      <td>freddy-mustermann&#64;email.com</td>
+      <td>01.01.2001</td>
+      <td>11111 Musterstadt</td>
+  </tr>
+  </table>
 </mat-card-content>
 
-
-<button (click)="openAddUserDialog()" class="add-user-btn" mat-fab color="primary" matTooltip="Add user" [matTooltipPosition]="'above'">
-    <mat-icon>person_add</mat-icon>
+<button
+  (click)="openAddUserDialog()"
+  class="add-user-btn"
+  mat-fab
+  color="primary"
+  matTooltip="Add user"
+  [matTooltipPosition]="'above'"
+>
+  <mat-icon>person_add</mat-icon>
 </button>
