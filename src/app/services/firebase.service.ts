@@ -15,8 +15,8 @@ import { doc, setDoc } from 'firebase/firestore';
 })
 export class FirebaseService {
   constructor(private firestore: Firestore) {
-    console.log(this.getUser());
-    
+    // console.log(this.getUser());
+    this.getUser();
   }
 
   public async addNewUser(userJson: any): Promise<void> {
@@ -30,17 +30,31 @@ export class FirebaseService {
     }
   }
 
-  public async getUser(): Promise<any> {
+  // public async getUser(): Promise<any> {
+  //   try {
+  //     const querySnapshot = await getDocs(collection(this.firestore, 'users'));
+  //     const users: any[] = [];
+  //     querySnapshot.forEach((doc) => {
+  //       users.push(doc.data());
+  //     });
+  //     // console.log('users:',users);
+  //   } catch (error) {
+  //     console.error('Error fetching user:', error);
+  //     throw error;
+  //   }
+  // }
+
+  public async getUser(): Promise<any[]> {  // Rückgabetyp ist jetzt ein Array von Usern
     try {
       const querySnapshot = await getDocs(collection(this.firestore, 'users'));
       const users: any[] = [];
       querySnapshot.forEach((doc) => {
-        users.push(doc.data());
+        users.push(doc.data()); // Daten des Dokuments hinzufügen
       });
-      console.log(users);
+      return users; // Hier die Benutzer zurückgeben
     } catch (error) {
-      console.error('Error fetching user:', error);
-      throw error;
+      console.error('Error fetching users:', error);
+      throw error; // Fehler werfen, damit er in der Komponente behandelt werden kann
     }
   }
 }

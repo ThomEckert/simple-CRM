@@ -8,19 +8,39 @@ import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.compo
 import { FirebaseService } from '../services/firebase.service';
 import { onSnapshot } from '@angular/fire/firestore';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [MatIconModule, MatButtonModule, MatTooltipModule, MatDialogModule, MatCardModule, RouterLink],
+  imports: [MatIconModule, MatButtonModule, MatTooltipModule, MatDialogModule, MatCardModule, RouterLink, CommonModule],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss',
 })
 export class UserComponent {
 
-  constructor(public dialog: MatDialog, public firebase: FirebaseService) {}
+  users: any[] = [];
+  isLoading: boolean = false;
+
+  constructor(public dialog: MatDialog, public firebaseService: FirebaseService) {}
+
+  ngOnInit(): void {
+    this.loadUsers();      
+  }
 
   openAddUserDialog() {
     this.dialog.open(DialogAddUserComponent);
+  }
+
+  async loadUsers() {
+    this.isLoading = true;
+    try {
+      this.users = await this.firebaseService.getUser();
+      console.log('Users:', this.users);      
+    } catch (error) {
+      console.error('Error loading users:', error);
+    } finally {
+      this.isLoading = false;
+    }
   }
 }

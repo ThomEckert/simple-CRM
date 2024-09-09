@@ -11,13 +11,15 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, provideNativeDateAdapter } from '@angular/material/core';
+import {
+  MatNativeDateModule,
+  provideNativeDateAdapter,
+} from '@angular/material/core';
 import { User } from '../../models/user.class';
 import { FormsModule } from '@angular/forms';
 import { FirebaseService } from '../services/firebase.service';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CommonModule } from '@angular/common';
-
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -42,20 +44,26 @@ import { CommonModule } from '@angular/common';
   styleUrl: './dialog-add-user.component.scss',
 })
 export class DialogAddUserComponent {
-
   user: User = new User();
   birthDate: Date = new Date();
   loading: boolean = false;
 
-  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>, public firebase: FirebaseService) { }
+  constructor(
+    public dialogRef: MatDialogRef<DialogAddUserComponent>,
+    public firebase: FirebaseService
+  ) {}
 
   public async saveNewUser(): Promise<void> {
     this.loading = true;
-    this.user.birthDate = this.birthDate.getTime();
-    let userJson = this.user.toJSON();
-    await this.firebase.addNewUser(userJson);
-    this.loading = false;
-    this.dialogRef.close();
+    try {
+      this.user.birthDate = this.birthDate.getTime();
+      let userJson = this.user.toJSON();
+      await this.firebase.addNewUser(userJson);
+    } catch (error) {
+      console.error('Error adding user:', error);
+    } finally {
+      this.loading = false;
+      this.dialogRef.close();
+    }
   }
-
 }

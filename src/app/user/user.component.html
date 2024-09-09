@@ -6,20 +6,12 @@
       <th>Birth Date</th>
       <th>Adress</th>
     </tr>
-
-    <tr>
-        <td>Max Mustermann</td>
-        <td>max-mustermann&#64;email.com</td>
-        <td>01.01.2001</td>
-        <td>11111 Musterstadt</td>
+    <tr *ngFor="let user of this.users">
+        <td>{{user.firstName}} {{user.lastName}}</td>
+        <td>{{user.eMail}}</td>
+        <td>{{user.birthDate | date: 'dd.MM.yyyy'}}</td>
+        <td>{{user.zipCode}} {{user.city}}</td>
     </tr>
-
-    <tr>
-      <td>Freddy Mustermann</td>
-      <td>freddy-mustermann&#64;email.com</td>
-      <td>01.01.2001</td>
-      <td>11111 Musterstadt</td>
-  </tr>
   </table>
 </mat-card-content>
 
