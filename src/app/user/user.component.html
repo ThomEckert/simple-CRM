@@ -6,7 +6,7 @@
       <th>Birth Date</th>
       <th>Adress</th>
     </tr>
-    <tr *ngFor="let user of this.users">
+    <tr *ngFor="let user of this.users" [routerLink]="['/user', user.userId]">
         <td>{{user.firstName}} {{user.lastName}}</td>
         <td>{{user.eMail}}</td>
         <td>{{user.birthDate | date: 'dd.MM.yyyy'}}</td>

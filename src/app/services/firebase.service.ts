@@ -13,9 +13,9 @@ import { doc, setDoc } from 'firebase/firestore';
 @Injectable({
   providedIn: 'root',
 })
+
 export class FirebaseService {
   constructor(private firestore: Firestore) {
-    // console.log(this.getUser());
     this.getUser();
   }
 
@@ -30,31 +30,17 @@ export class FirebaseService {
     }
   }
 
-  // public async getUser(): Promise<any> {
-  //   try {
-  //     const querySnapshot = await getDocs(collection(this.firestore, 'users'));
-  //     const users: any[] = [];
-  //     querySnapshot.forEach((doc) => {
-  //       users.push(doc.data());
-  //     });
-  //     // console.log('users:',users);
-  //   } catch (error) {
-  //     console.error('Error fetching user:', error);
-  //     throw error;
-  //   }
-  // }
-
-  public async getUser(): Promise<any[]> {  // Rückgabetyp ist jetzt ein Array von Usern
+  public async getUser(): Promise<any[]> {
     try {
       const querySnapshot = await getDocs(collection(this.firestore, 'users'));
       const users: any[] = [];
       querySnapshot.forEach((doc) => {
-        users.push(doc.data()); // Daten des Dokuments hinzufügen
+        users.push(doc.data());
       });
-      return users; // Hier die Benutzer zurückgeben
+      return users;
     } catch (error) {
       console.error('Error fetching users:', error);
-      throw error; // Fehler werfen, damit er in der Komponente behandelt werden kann
+      throw error;
     }
   }
 }
