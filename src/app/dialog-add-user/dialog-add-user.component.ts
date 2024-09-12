@@ -45,7 +45,7 @@ import { CommonModule } from '@angular/common';
 })
 export class DialogAddUserComponent {
   user: User = new User();
-  birthDate: Date = new Date();
+  birthDate: Date | null = null;
   loading: boolean = false;
 
   constructor(
@@ -56,7 +56,12 @@ export class DialogAddUserComponent {
   public async saveNewUser(): Promise<void> {
     this.loading = true;
     try {
-      this.user.birthDate = this.birthDate.getTime();
+      if (this.birthDate) {
+        this.user.birthDate = this.birthDate.getTime();
+      } else {
+        throw new Error("No birth date provided.");
+      }
+      // this.user.birthDate = this.birthDate.getTime();
       let userJson = this.user.toJSON();
       await this.firebase.addNewUser(userJson);
     } catch (error) {
