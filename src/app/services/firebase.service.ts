@@ -43,4 +43,19 @@ export class FirebaseService {
       throw error;
     }
   }
+
+  public async getUserById(userId: string): Promise<any> {
+    try {
+      const userDocRef = doc(this.firestore, `users/${userId}`);
+      const userDoc = await getDoc(userDocRef);
+      if (userDoc.exists()) {
+        return userDoc.data();
+      } else {
+        throw new Error('User not found');
+      }
+    } catch (error) {
+      console.error('Error fetching user by ID:', error);
+      throw error;
+    }
+  }
 }

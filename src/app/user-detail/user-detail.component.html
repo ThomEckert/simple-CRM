@@ -1,1 +1,20 @@
-<p>user-detail works!</p>
+<mat-card class="user-detail-header" *ngIf="userDetail">
+    <img src="./assets/img/person_m.png" alt="">
+    <div class="user-detail">
+        <h2>{{userDetail.firstName}} {{userDetail.lastName}}</h2>
+        {{userDetail.eMail}}
+    </div>
+</mat-card>
+
+<mat-card class="mt-32" *ngIf="userDetail">
+    <mat-card-header>
+        <mat-card-title>Address</mat-card-title>
+      </mat-card-header>
+
+    <mat-card-content>
+        {{userDetail.street}} <br>
+        {{userDetail.zipCode}} {{userDetail.city}}
+    </mat-card-content>
+</mat-card>
+
+<mat-spinner *ngIf="isLoading"></mat-spinner>
