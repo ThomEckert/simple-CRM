@@ -8,6 +8,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
+import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-detail',
@@ -31,7 +34,8 @@ export class UserDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    public firebaseService: FirebaseService
+    public firebaseService: FirebaseService,
+    public dialog: MatDialog
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -62,5 +66,13 @@ export class UserDetailComponent implements OnInit {
 
   editMenu() {
     console.log('Edit menu');
+  }
+
+  openEditAddressDialog() {
+    this.dialog.open(DialogEditAddressComponent);
+  }
+
+  openEditUserDialog() {
+    this.dialog.open(DialogEditUserComponent);
   }
 }
