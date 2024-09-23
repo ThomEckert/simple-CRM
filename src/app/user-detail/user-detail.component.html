@@ -7,9 +7,13 @@
 </mat-card>
 
 <mat-card class="mt-32" *ngIf="userDetail">
+    <button mat-icon-button class="pin-right-upper-corner" (click)="openAddressDialog()">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    
     <mat-card-header>
         <mat-card-title>Address</mat-card-title>
-      </mat-card-header>
+    </mat-card-header>
 
     <mat-card-content>
         {{userDetail.street}} <br>
