@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-user-detail',
@@ -18,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
+    MatMenuModule,
   ],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.scss',
@@ -54,7 +56,11 @@ export class UserDetailComponent implements OnInit {
     }
   }
 
-  openAddressDialog() {
-    console.log('Open address dialog');
+  editUserDetail() {
+    console.log('Edit user detail');
+  }
+
+  editMenu() {
+    console.log('Edit menu');
   }
 }

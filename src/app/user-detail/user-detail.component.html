@@ -1,4 +1,13 @@
 <mat-card class="user-detail-header" *ngIf="userDetail">
+    <button mat-icon-button class="pin-right-upper-corner" [matMenuTriggerFor]="userMenu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #userMenu="matMenu">
+        <button mat-menu-item (click)="editUserDetail()">Edit</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
+    
     <img src="./assets/img/person_m.png" alt="">
     <div class="user-detail">
         <h2>{{userDetail.firstName}} {{userDetail.lastName}}</h2>
@@ -7,9 +16,14 @@
 </mat-card>
 
 <mat-card class="mt-32" *ngIf="userDetail">
-    <button mat-icon-button class="pin-right-upper-corner" (click)="openAddressDialog()">
+    <button mat-icon-button class="pin-right-upper-corner" [matMenuTriggerFor]="addressMenu">
         <mat-icon>more_vert</mat-icon>
     </button>
+
+    <mat-menu #addressMenu="matMenu">
+        <button mat-menu-item (click)="editMenu()">Edit</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
     
     <mat-card-header>
         <mat-card-title>Address</mat-card-title>
