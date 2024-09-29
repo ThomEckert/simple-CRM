@@ -27,6 +27,7 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.scss',
 })
+
 export class UserDetailComponent implements OnInit {
   userID = '';
   userDetail: any = [];
@@ -60,19 +61,14 @@ export class UserDetailComponent implements OnInit {
     }
   }
 
-  editUserDetail() {
-    console.log('Edit user detail');
-  }
-
-  editMenu() {
-    console.log('Edit menu');
-  }
-
-  openEditAddressDialog() {
+  async openEditAddressDialog() {
+    console.log('Edit menu start');
     this.dialog.open(DialogEditAddressComponent);
+    console.log('Edit menu end');
   }
 
   openEditUserDialog() {
     this.dialog.open(DialogEditUserComponent);
+    console.log('Edit user detail');
   }
 }
