@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import {
+  MatDialogClose,
+  MatDialogModule,
+  MatDialogRef,
+  MatDialogTitle,
+} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CommonModule } from '@angular/common';
@@ -12,17 +17,27 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-dialog-edit-address',
   standalone: true,
-  imports: [ MatProgressBarModule, MatFormFieldModule, CommonModule, MatInputModule, FormsModule, MatButtonModule, MatDialogTitle ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatProgressBarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDialogTitle,
+    MatDialogClose,
+    MatDialogModule
+  ],
   templateUrl: './dialog-edit-address.component.html',
-  styleUrl: './dialog-edit-address.component.scss'
+  styleUrl: './dialog-edit-address.component.scss',
 })
-export class DialogEditAddressComponent{
+export class DialogEditAddressComponent {
   loading: boolean = false;
   user!: User;
 
   constructor(
     public dialogRef: MatDialogRef<DialogEditAddressComponent>,
-    public firebase: FirebaseService,
+    public firebase: FirebaseService
   ) {}
 
   public async updateAddress(): Promise<void> {

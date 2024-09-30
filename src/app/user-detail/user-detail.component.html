@@ -4,9 +4,9 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #userMenu="matMenu">
-      <button mat-menu-item (click)="openEditUserDialog()">
+      <button mat-menu-item (click)="openDialogEditUser()">
         <mat-icon>edit</mat-icon>
-        <p>Edit</p>
+        Edit
       </button>
     </mat-menu>
 
@@ -27,7 +27,7 @@
   </button>
 
   <mat-menu #addressMenu="matMenu">
-    <button mat-menu-item (click)="editAddress()">Edit</button>
+    <button mat-menu-item (click)="openDialogEditAddress()">Edit</button>
   </mat-menu>
 
   <mat-card-header>
@@ -40,4 +40,6 @@
   </mat-card-content>
 </mat-card>
 
-<mat-spinner *ngIf="isLoading"></mat-spinner>
+@if (isLoading) {
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+}

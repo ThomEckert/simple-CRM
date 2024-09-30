@@ -1,4 +1,6 @@
-<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+@if (loading) {
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+}
 
 <h1 mat-dialog-title>Edit address</h1>
 
@@ -23,7 +25,7 @@
         [disabled]="loading"
         [(ngModel)]="user.zipCode"
         matInput
-        placeholder="z.B. Mustermann"
+        placeholder="z.B. 12345"
       />
     </mat-form-field>
 
@@ -33,7 +35,7 @@
         [disabled]="loading"
         [(ngModel)]="user.city"
         matInput
-        placeholder="z.B. Mustermann"
+        placeholder="z.B. Musterstadt"
       />
     </mat-form-field>
   </div>

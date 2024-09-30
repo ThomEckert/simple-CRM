@@ -62,16 +62,17 @@ export class UserDetailComponent implements OnInit {
     }
   }
 
-  editAddress() {
+  openDialogEditAddress() {
     setTimeout(() => {
-     const dialog = this.dialog.open(DialogEditAddressComponent);
-     dialog.componentInstance.user = this.userDetail;
+     let dialog = this.dialog.open(DialogEditAddressComponent);
+     dialog.componentInstance.user = new User(this.userDetail);
     }, 50)
   }
 
-  openEditUserDialog() {
+  openDialogEditUser() {
     setTimeout(() => {
-     this.dialog.open(DialogEditUserComponent);
+     const dialog = this.dialog.open(DialogEditUserComponent);
+     dialog.componentInstance.user = new User(this.userDetail);
     }, 50)
   }
 }
