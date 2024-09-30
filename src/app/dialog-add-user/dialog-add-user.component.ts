@@ -50,7 +50,7 @@ export class DialogAddUserComponent {
 
   constructor(
     public dialogRef: MatDialogRef<DialogAddUserComponent>,
-    public firebase: FirebaseService
+    public firebase: FirebaseService,
   ) {}
 
   public async saveNewUser(): Promise<void> {

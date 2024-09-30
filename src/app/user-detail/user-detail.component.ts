@@ -11,6 +11,7 @@ import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 import { MatDialog } from '@angular/material/dialog';
+import { User } from '../../models/user.class';
 
 @Component({
   selector: 'app-user-detail',
@@ -61,18 +62,16 @@ export class UserDetailComponent implements OnInit {
     }
   }
 
-  openEditAddressDialog() {
-    console.log('Edit menu start');
+  editAddress() {
     setTimeout(() => {
-     this.dialog.open(DialogEditAddressComponent);
-    }, 5)
-    console.log('Edit menu end');
+     const dialog = this.dialog.open(DialogEditAddressComponent);
+     dialog.componentInstance.user = this.userDetail;
+    }, 50)
   }
 
   openEditUserDialog() {
     setTimeout(() => {
      this.dialog.open(DialogEditUserComponent);
-    }, 5)
-    console.log('Edit user detail');
+    }, 50)
   }
 }

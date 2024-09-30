@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
-  addDoc,
   collection,
-  CollectionReference,
-  DocumentData,
   Firestore,
   getDoc,
   getDocs,
