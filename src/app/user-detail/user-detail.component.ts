@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
-import { MatMenuModule } from '@angular/material/menu';
+import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -61,14 +61,18 @@ export class UserDetailComponent implements OnInit {
     }
   }
 
-  async openEditAddressDialog() {
+  openEditAddressDialog() {
     console.log('Edit menu start');
-    this.dialog.open(DialogEditAddressComponent);
+    setTimeout(() => {
+     this.dialog.open(DialogEditAddressComponent);
+    }, 5)
     console.log('Edit menu end');
   }
 
   openEditUserDialog() {
-    this.dialog.open(DialogEditUserComponent);
+    setTimeout(() => {
+     this.dialog.open(DialogEditUserComponent);
+    }, 5)
     console.log('Edit user detail');
   }
 }

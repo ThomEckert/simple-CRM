@@ -1,18 +1,14 @@
 <mat-card class="user-detail-header" *ngIf="userDetail">
 
-  <div>
     <button mat-icon-button class="pin-right-upper-corner" [matMenuTriggerFor]="userMenu">
       <mat-icon>more_vert</mat-icon>
     </button>
-
     <mat-menu #userMenu="matMenu">
       <button mat-menu-item (click)="openEditUserDialog()">
         <mat-icon>edit</mat-icon>
-        Edit
+        <p>Edit</p>
       </button>
     </mat-menu>
-
-  </div>
 
   <img src="./assets/img/person_m.png" alt="" />
   <div class="user-detail">
